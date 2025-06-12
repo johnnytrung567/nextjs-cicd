@@ -5,8 +5,12 @@ type Params = {
 };
 
 export async function generateStaticParams() {
-  return []
+  const slugs: string[] = []; // or fetch slugs
+  return slugs.length > 0
+    ? slugs.map(slug => ({ slug }))
+    : [{ slug: 'placeholder' }];
 }
+
 
 export async function generateMetadata({ params }: Params) {
   return { title: `Post: ${params.slug}` };
